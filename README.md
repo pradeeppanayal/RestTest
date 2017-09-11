@@ -1,5 +1,5 @@
 # RestTest
-This is a simple Python application to validate REST calls. It allows to group and executes seroes of API calls. It also helps us to perform validations on response. On the fly, while setting up the tests and test group you can see the response and validation result. Simple interfaces helps to keep the applocation simple and usable.
+This is a simple Python application to validate REST calls. It allows to group and executes series of API calls. We can strict validate the API response. On the fly, while creating the tests we can see the response and perfoem validations. Simple design of the webpages helps to use the application without any effort.
 # Components
 * Test groups : Logical grouping of tests. 
 * Test : Each test contains single API call and it's validations
