@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ResTest - Test Groups</title>
+      <meta charset="utf-8"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <link rel="stylesheet" href="/web/style/bootstrap.min.css"></link>
+      <script src="/web/js/jquery.min.js"></script>
+      <script src="/web/js/bootstrap.min.js"></script>
+      <script src="/web/js/jqueryext.js"></script>
+      <script src="/web/js/utils.js"></script>
+      <script src="/web/js/testgroups/view.js"></script>
+   </head>
+   <body>
+      <div class="container">
+         <h2>ResTest</h2>     
+
+         <div class='consoleContent' id='consoleContent'></div>
+    
+  	<ol class="breadcrumb">
+    		<li><span class='glyphicon glyphicon-home'></span></li>
+    		<li><a href="/web/testgroups">Test Groups</a></li>
+  	</ol> 
+
+         <div class="table-responsive">
+            <div class="panel panel-default">
+               <div class="panel-heading">Test groups
+			<button class="addButton pull-right" ><a href='/web/testgroups/add' class='pull-right' title='Add new group'><span class='glyphicon glyphicon-plus'></span></a></button>
+			<button class="addButton executeBtn pull-right" action='execute' id='execute' title='Execute group(s)'><a><span class='glyphicon glyphicon-play'></span></a></button>
+			<button class="addButton executeBtn pull-right" action='delete' id='delete'><a>	<span class='glyphicon glyphicon-trash' title='Delete the groups(s)'></span></a></button>
+               </div>
+               <div class="panel-body">
+                  <table class="table" id='servers'>
+                     <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Module</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th></th>
+                     </tr>  
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

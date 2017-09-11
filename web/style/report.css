@@ -1,0 +1,27 @@
+ .left-tabs-wrap-ext{
+         border: 1px solid #ddd;
+         }
+         .left-tabs-wrap-ext ul{
+         width: 20%;
+         float: left;
+         }
+         .left-tabs-wrap-ext ul li{
+         display: block;
+         float: none;
+         }
+         .left-tabs-wrap-ext ul li.active a, .left-tabs-wrap ul li.active a:focus, .left-tabs-wrap ul li.active a:hover{
+         background: #ccc;
+         }
+         .left-tabs-wrap-ext ul li a{
+         border-bottom: 1px solid #ddd;
+         margin-right: 0;
+         }
+         .left-tabs-wrap-ext > .tab-content{
+         width: 80%;
+         float: left;
+         border-left: 1px solid #ddd;
+         padding: 15px;
+         }
+         .accordion-wrap-ext {
+         width: 100%;
+         }

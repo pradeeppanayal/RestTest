@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+
+<title>Sexy Forms</title>
+<link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+<article>
+<h1>Sexy form elements</h1>
+<form>
+	<ul>
+        <li>
+        	<label for="name">Your Name:</label>
+            <input type="text" size="40" id="name">
+        </li>
+        <li>
+        	<label for="email">Your Email:</label>
+            <input type="email" size="40" id="email">
+        </li>
+        <li>
+            <label for="car">What's my options:</label>
+            <div class="selector" id="uniform-car"><span>Volvo</span><select id="car" style="opacity: 0;">
+                <option>Volvo</option>
+                <option>Saab</option>
+                <option>Mercedes</option>
+                <option>Audi</option>
+                <option>Other…</option>
+            </select></div>
+        </li>
+        <li>
+            <label><div class="radio"><span><input type="radio" name="radio" style="opacity: 0;"></span></div> Pick one</label>
+            <label><div class="radio"><span><input type="radio" name="radio" style="opacity: 0;"></span></div> And stick with it</label>
+        </li>
+        <li>
+			<label><div class="checker"><span><input type="checkbox" style="opacity: 0;"></span></div> Can haz tickbox?</label>
+        </li>
+        <li>
+            <label>Upload a file:</label>
+            <div class="uploader"><input type="file" style="opacity: 0;"><span class="filename">No file selected</span><span class="action">Choose File</span></div>
+        </li>
+        <li>
+        	<label for="message">Message:</label>
+            <textarea cols="50" rows="5" id="message"></textarea>
+		</li>
+	</ul>
+    <p>
+        <button type="submit" class="action">Call to action</button>
+        <button type="reset" class="right">Reset</button>
+    </p>
+</form> 

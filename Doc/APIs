@@ -1,0 +1,160 @@
+1. Create test group
+=======================
+URL : http://127.0.0.1:5000/rtest/create
+
+Payload :
+{
+  "testname":"Config_Test1",
+  "description":"Some description",
+  "authetication":true,
+  "module":"configlet"
+  
+}
+
+Response:
+{
+    "status": "success",
+    "data": "Test group created successfully"
+}
+
+Error:
+{
+    "status": "error",
+    "error": "Test Config_Test1 is exist"
+}
+
+2. Delete a test group
+=========================
+URL :http://127.0.0.1:5000/rtest/delete
+Payload:
+{
+  "testname":"Config_Test1" 
+  
+}
+
+Response:
+{
+    "status": "success",
+    "data": "Test removed"
+}
+
+Error:
+{
+    "status": "error",
+    "error": "Test Config_Test1 is does not exist"
+}
+
+3: Add test
+============================
+URL : http://127.0.0.1:5000/rtest/tests/add
+Payload :
+{
+	"testname": "Config_Test1",
+	"testdata": {
+		"type": "POST",
+		"name": "addConfiglet",
+		"api": "configlet/addConfiglet.do",
+		"tracks": [{
+			"target": "data:key",
+			"name": "key"
+		}, {
+			"target": "data:name",
+			"name": "name"
+		}],
+      "validations":[{
+		"key": "data:name",
+		"value": "payload:name"
+	}, {
+		"key": "data:config",
+		"value": "payload:config"
+	}, {
+		"key": "data:type",
+		"value": "Static"
+	}, {
+		"key": "data:editable",
+		"value": true
+	}, {
+		"key": "data:reconciled",
+		"value": false
+	}, {
+		"key": "data:note",
+		"value": ""
+	}],
+      "payload":{"config":"test","name":"test1"}
+	}
+
+}
+Response:
+{
+    "status": "success",
+    "data": "Test info added successfully"
+}
+
+4:Validate
+=====================
+URL : http://127.0.0.1:5000/rtest/validate
+Payload:
+{
+	"testname": "Config_Test1",
+  "apiendpoint":"https://192.168.107.58/cvpservice/",
+  "username":"cvpadmin",
+  "password":"pradeep"
+}
+
+5: Update a test
+=================
+URL :http://127.0.0.1:5000/rtest/tests/update
+Payload :
+{
+	"testname": "Config_Test1",
+	"testdata": {
+		"type": "POST",
+		"name": "addConfiglet",
+		"api": "configlet/addConfiglet.do",
+		"tracks": [{
+			"target": "data:key",
+			"name": "key"
+		}, {
+			"target": "data:name",
+			"name": "name"
+		}],
+      "validations":[{
+		"key": "data:name",
+		"value": "payload:name"
+	}, {
+		"key": "data:config",
+		"value": "payload:config"
+	}, {
+		"key": "data:type",
+		"value": "Static"
+	}, {
+		"key": "data:editable",
+		"value": true
+	}, {
+		"key": "data:reconciled",
+		"value": false
+	}, {
+		"key": "data:note",
+		"value": ""
+	}],
+      "payload":{"config":"test","name":"test1"}
+	}
+
+}
+
+6:Delete test
+=================
+URL : http://127.0.0.1:5000/rtest/tests/delete
+Payload :
+{
+	"testname": "Config_Test1",
+	"testdata": { 
+		"name": "addConfiglet"
+    }
+}
+
+Response :
+{
+    "status": "success",
+    "data": "Test addConfiglet removed from test group Config_Test1"
+}

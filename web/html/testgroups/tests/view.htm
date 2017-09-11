@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ResTest - Tests</title>
+      <meta charset="utf-8"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <link rel="stylesheet" href="/web/style/bootstrap.min.css"></link>
+      <script src="/web/js/jquery.min.js"></script>
+      <script src="/web/js/bootstrap.min.js"></script>
+      <script src="/web/js/jqueryext.js"></script>
+      <script src="/web/js/utils.js"></script>
+      <script src="/web/js/testgroups/tests/tests.js"></script>
+   </head>
+   <body>
+      <div class="container">
+         <h2>ResTest</h2>
+         <div class='consoleContent' id='consoleContent'></div>
+         
+  	  <ol class="breadcrumb">
+    		<li><span class='glyphicon glyphicon-home'></span></li>
+    		<li><a href="/web/testgroups">Test Groups</a></li>
+    		<li id='testGroupName'>Test Name</li>
+  	  </ol> 
+
+         <div class="table-responsive">
+            <div class="panel panel-default">
+               <div class="panel-heading">Tests
+			<button class="pull-right" ><a href='#' id='addTest' title='Edit test' ><span class='glyphicon glyphicon-plus'></span></a></button> 
+			<button class="pull-right" ><a href='#' id='addTest' title='Create new Test' ><span class='glyphicon glyphicon-pencil'></span></a></button> 
+               </div>
+               <div class="panel-body">
+                  <table class="table" id='tests'>
+                     <tr>
+                        <th></th>
+			<th>Name</th>
+			<th>API</th> 
+			<th>Type</th>  
+			<th>Order</th>
+			<th></th>   
+                     </tr>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

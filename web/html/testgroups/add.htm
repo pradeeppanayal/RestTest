@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ResTest - Create New Test Group</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/web/style/bootstrap.min.css">
+      <script src="/web/js/jquery.min.js"></script>
+      <script src="/web/js/bootstrap.min.js"></script>
+      <script src="/web/js/jqueryext.js"></script>
+      <script src="/web/js/utils.js"></script>
+      <script type="text/javascript" src="/web/js/testgroups/add.js"></script>
+   </head>
+   <body>
+      <div class="container"> 
+
+         <h2>ResTest</h2>
+                  
+  	<ol class="breadcrumb">
+    		<li><span class='glyphicon glyphicon-home'></span></li>
+    		<li><a href="/web/testgroups">Test Groups</a></li>
+    		<li>New Testgroup</li> 
+  	</ol> 
+
+         <div class='consoleContent' id='consoleContent'></div>
+         <div class="table-responsive">
+            <div class="panel panel-default">
+               <div class="panel-heading">Test groups </div>
+               <div class="panel-body">
+                  <div class="form-group">
+                  <span>Name</span>
+                  <input type="text"  class='form-control'  name="name" id='name'/>
+               </div>
+               <div class="form-group">
+                  <span>Module</span>
+                  <input type="text"  class='form-control'  name="module" id='module' />
+               </div>
+               <div class="form-group">
+                  <span>Description</span>
+                  <textarea   class='form-control' id='desc'></textarea>
+               </div> 
+               <div class="buttonWrap">
+                  <button id='save' class="btn success">Create Group</button>
+                  <button class="btn default" id='reset'>Clear</button>
+               </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

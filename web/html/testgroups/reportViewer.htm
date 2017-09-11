@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ResTest-Report Viewer</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/web/style/bootstrap.min.css">
+      <link rel="stylesheet" href="/web/style/report.css">
+      <script src="/web/js/jquery.min.js"></script>
+      <script src="/web/js/bootstrap.min.js"></script>
+      <script src="/web/js/jqueryext.js"></script>
+      <script src="/web/js/utils.js"></script>
+      <script src="/web/js/testgroups/reports.js"></script>
+      <script src="/web/js/testgroups/tests/validatorGenerator.js"></script>
+      <script src="/web/js/testgroups/reportViewer.js"></script> 
+   </head>
+   <body>
+      <div class="container">
+        <h2>ResTest</h2>
+         <div class='consoleContent' id='consoleContent'> </div>
+             
+  	  <ol class="breadcrumb">
+    		<li><span class='glyphicon glyphicon-home'></span></li>
+    		<li><a href="/web/testgroups">Test Groups</a></li>
+    		<li>Report</li>
+  	  </ol> 
+
+         <ul class="nav nav-tabs">
+            <li  class="active"><a data-toggle="tab" href="#menu1" id='tryTab'>Envirnment Information</a></li>
+            <li><a data-toggle="tab" href="#menu2" id='reportTab'>Validation Report</a></li>
+         </ul>
+         <div class="tab-content"> 
+            <div id="menu1" class="tab-pane fade in active">
+               <div class="panel panel-default">
+                  <div class="panel-heading">Envirnament Information</div>
+                  <div class="panel-body">
+                     <div class="form-group">
+                        <span>API Enpoint</span>
+                        <input type="text" name="name" value="http://127.0.0.1:5000" class='form-control' id='apiendpoint' />
+                     </div>
+                     <div class="form-group">
+                        <span>Headers</span>
+                        <textarea id='headers'  class='form-control' val=''>
+                        { 
+                        "Accept":"application/json",
+                        "Content-Type" : "application/json"
+                        }
+                        </textarea>
+                     </div>
+                     <div class="form-group">
+                        <span>cookies</span>
+                        <textarea id='cookies'  class='form-control' placeHolder = '{"key":"value"}'>
+                        {
+                        }
+                        </textarea>
+                     </div>
+                     <div class="buttonWrap">
+                        <button class="btn default" id='genarate'>Genarate</button>
+                        <button class="btn default" id='home'>Home</button>
+                     </div>
+                  </div>
+               </div>
+            </div>  
+            <div id="menu2" class="tab-pane fade">
+               <h3>The Result</h3>
+               <div class="panel panel-default">
+                  <div class="panel-heading">Validaton Report</div>
+                  <div class="panel-body"> 
+			<div class="left-tabs-wrap clearfix left-tabs-wrap-ext">
+            			<ul class="nav nav-tabs" id='testsIndex'> 
+            			</ul>
+            			<div class="tab-content" id='testsContent'>   
+                  		</div>
+               		</div>			
+                     <div class="buttonWrap">
+                        <button class="btn default" id='home'>Home</button>
+                     </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
