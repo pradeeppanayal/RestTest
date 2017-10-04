@@ -1,5 +1,5 @@
 # RestTest
-This is a simple Python application to validate REST calls. It allows to group and execute series of API calls. We can strict validate the API response. On the fly, while creating the tests we can see the response and perfoem validations. Simple design of the webpages helps to use the application without any effort.
+It is a tool developed in python to validate REST calls. The main objective of this project to avoid the manual work need to validate the APIs. It has a simple UI which helps the user to configure the test easily. User can set possible rules on the API response and validate from provided interface. 
 # Components
 * Test groups : Logical grouping of tests. 
 * Test : Each test contains single API call and it's validations
@@ -18,6 +18,6 @@ This is a simple Python application to validate REST calls. It allows to group a
 * JQuery 
 * JS
 # Server
-`Flask` is used to host the application.
+`Flask` is used to host this application.
 # Set up
 Copy the files to your local and run `gateway.py` and enjoy :)
