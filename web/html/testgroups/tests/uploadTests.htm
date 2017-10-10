@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ResTest - Create New Tests</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/web/style/bootstrap.min.css">
+      <link rel="stylesheet" href="/web/style/report.css">
+      <script src="/web/js/jquery.min.js"></script>
+      <script src="/web/js/bootstrap.min.js"></script>
+      <script src="/web/js/jqueryext.js"></script>
+      <script src="/web/js/utils.js"></script>
+      <script src="/web/js/testgroups/tests/uploadTests.js"></script> 
+   </head>
+   <body>
+      <div class="container">
+         <h2>ResTest</h2>
+         <div class='consoleContent' id='consoleContent'> </div>         
+  	  <ol class="breadcrumb">
+    		<li><span class='glyphicon glyphicon-home'></span></li>
+    		<li><a href="/web/testgroups">Test Groups</a></li>
+    		<li ><a href="#" id='testGroupName'>Test Name</a></li>
+    		<li >Upload Tests</li>
+  	  </ol>   
+
+         <div id="testInfo" class="tab-pane fade in active">
+               <h3>Test Information</h3>
+               <div class="panel panel-default">
+                  <div class="panel-heading">Test information</div>
+                  <div class="panel-body">
+                     <div class="form-group">
+                        <span>File</span>
+			<div>
+                        <label class="btn btn-primary" for="my-file-selector">
+    				<input id="my-file-selector" type="file" style="display:none"
+        				onchange="$('#upload-file-info').html(
+            				(this.files.length > 1) ? this.files[0].name : this.files.length + ' files')">                     
+    					Files&hellip;
+				</label>
+				<span class='label label-info' id="upload-file-info"></span>
+			</div>
+			</div>
+			<div>
+                     <div class="buttonWrap">
+                        <button class="btn default" id='uploadfiles'>Upload</button>
+                     </div>
+                  </div>
+               </div> 
+         </div>
+      </div>
+      </div>
+   </body>
+</html>

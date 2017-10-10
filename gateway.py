@@ -16,6 +16,7 @@ from testrunner import TestGroupExecutorDemo
 from testrunner import executeTestGroups
 
 from rtester import TestManager,view
+from rtester import RXLImporter
 
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_url_path='')
@@ -155,6 +156,23 @@ def updateTest():
 
       manager = TestManager(data['testname'])
       resp = manager.updateTest(data)
+   except Exception as e:
+      resp = {'status':'error','error':str(e)} 
+   resp = json.dumps(resp)
+   return Response(resp, mimetype='application/json') 
+
+@app.route('/rtest/tests/uploadTests',methods=['POST'])
+def uploadTest(): 
+   try:
+      testGroupName = request.form['testGroupName']
+      assert testGroupName,"Test group name required"
+      assert  len(request.files)>0,'Please upload a file'
+      assert  len(request.files)==1,'Multiple files are not supported yet :(' 
+      uploadedFile = request.files['file1']
+      assert uploadedFile and uploadedFile.filename !='',"Invalid file"
+      filename = uploadedFile.filename#secure_filename(file.filename)
+      importer = RXLImporter(uploadedFile,filename,testGroupName)
+      resp = importer.importTests()       
    except Exception as e:
       resp = {'status':'error','error':str(e)} 
    resp = json.dumps(resp)

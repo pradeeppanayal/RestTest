@@ -32,5 +32,18 @@ $.extend({
 					targetMethod(response);
 				}
 			});  
-		} 
+		} ,
+		triggerPOSTCallWithoutContentType : function(target,bodyContent,targetMethod){
+			$.ajax({
+				url: target,
+       				data: bodyContent,
+    				cache: false,
+   				contentType: false,
+    				processData: false,
+    				type: 'POST',
+       				success: function(response, status, xhr){  
+					targetMethod(response);
+				}
+			});  
+		}
 });

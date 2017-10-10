@@ -9,5 +9,7 @@
 
 from testers import TestManager
 from TestViewer import TestViewer
+from xlimporter import RXLImporter
+
 view = TestViewer()
 
