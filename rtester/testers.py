@@ -74,7 +74,8 @@ class TestManager(object):
       assert 'name' in testdata.keys() and testdata['name']!='','testdata:name required'
       assert 'type' in testdata.keys()  and testdata['type']!='','testdata:type required'
       assert 'api' in testdata.keys()  and testdata['api']!='','testdata:api required'
-      assert "validations" in data.keys(),'validations cannot be null'
+      assert "response" in testdata.keys(),'testdata:response required'
+      assert "validations" in data.keys(),'validations required'
 
       if testdata['type'] != 'GET':
          assert 'payload' in testdata.keys(),'testdata:payload cannot be null for the type POST'
@@ -106,7 +107,7 @@ class TestManager(object):
          order = len(tests)+1
 
       tests[testdata['name']]={'name':testdata['name'],'api':testdata['api'],
-         'order':order, 'type':testdata['type']}      
+         'order':order, 'type':testdata['type'],'response':testdata['response']}      
       
       data['tests'] = tests
       writeFile(self.testFile,json.dumps(data)) 
@@ -148,22 +149,18 @@ class TestManager(object):
       del data[name]
       writeFile(self.validationFile,json.dumps(data))
 
-   def removeTest(self,requestdata):
+   def removeTests(self,names):
       assert os.path.exists(self.dir),"Test "+ self.testname +" is does not exist"
-
-      testdata = requestdata['testdata']
-
-      assert "name" in testdata.keys(),"testdata:name is required"
-      self._removeTest(testdata['name'])
-      return {'status':'success','data':'Test ' + testdata['name'] +' removed from test group ' + self.testname}
-
-   def removeTests(self,requestdata):
-      assert os.path.exists(self.dir),"Test "+ self.testname +" is does not exist"
-      testdata = requestdata['testdata']
-      assert "names" in testdata.keys(),"testdata:name is required"
-      for name in testdata['names']:
-         self._removeTest(name)
-      return {'status':'success','data':'Tests deleted successfully'}
+      success = 0
+      total = len(names)
+      try: 
+         for name in names:
+            print name
+            self._removeTest(name)
+            success +=1
+      except:
+         pass
+      return {'status':'success','data':'Test(s) deleted. Total : %d, Success:%d, Failed :%d ' %(total,success,total-success)}
 
    def getTestdata(self,testname):
       assert os.path.exists(self.dir),"Test "+ self.testname +" is does not exist"
@@ -180,8 +177,8 @@ class TestManager(object):
          payload = payloads[testname]
 
       testInfo = {'name':test['name'],'payload':payload,'api':test['api'],
-                  'order':test['order'], 'type':test['type'],
-                  'tracks':test['tracks'],'validations':validations[testname]
+                  'order':test['order'], 'type':test['type'],'response':test['response'],
+                  'validations':validations[testname]
                  }  
 
       return {'status':'success','data':testInfo}
@@ -228,7 +225,7 @@ class TestManager(object):
       test = tests[testdata['name']]
 
       #TODO get data and add if update failed
-      self.removeTest(requestdata) 
+      self._removeTest(testdata['name']) 
       self.addTest(requestdata,test['order'])
       return {'status':'success','data':'Test ' + testdata['name'] +' updated successfully'}
 

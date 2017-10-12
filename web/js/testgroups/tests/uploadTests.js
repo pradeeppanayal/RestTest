@@ -21,7 +21,7 @@ function loadTests(){
 
 $(document).on('click', '#uploadfiles', function (event) {  
 	event.preventDefault();  
-	files = $('#my-file-selector')[0].files;  
+	var files = $('#my-file-selector')[0].files;  
         if(files === undefined || files.length==0){
 		showError("Please select a file.")
 		return;
@@ -29,7 +29,7 @@ $(document).on('click', '#uploadfiles', function (event) {
 		showError("Multiple files are not supported yet :(")
 		return;
         }
-        target = '/rtest/tests/uploadTests';
+        var target = '/rtest/tests/uploadTests';
         var data = new FormData()
         data.append("testGroupName", testGroupName);
         data.append("file1", files[0]);

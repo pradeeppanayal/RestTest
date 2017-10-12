@@ -7,16 +7,42 @@ Since     : 1.0.0
 */
 
 testGroupName =''
+testname = undefined
+
 $( document ).ready(function() {
     loadTests()
 });
 function loadTests(){
-   url = getURL()
-   
-   parts = url.split('/')
+   var url = getURL()   
+   var parts = url.split('/')
    testGroupName = parts[parts.length-2] 
    $('#testGroupName').html(testGroupName)
    $('#testGroupName').attr('href','/web/testgroups/tests/'+testGroupName)
+   testname = getParamValue('testname')
+   if(testname !=undefined){
+     loadTest();
+   }
+}
+
+function loadTest(){
+   var targetUrl = '/rtest/'+testGroupName+'/' + testname
+   $.doGet(targetUrl,loadTestInfo)
+}
+
+function loadTestInfo(obj){
+	if (obj['status'] =='error'){ 
+		showError(obj['error']) 
+	}else{ 
+              test = obj['data']
+               $('#api').val(test['api'])
+               $('#name').val(test['name'])
+               $('#type').val(test['type'])
+               $('#response').val(test['response'])
+               if (test['type'] != 'GET'){
+                   $('#payload').val(test['payload'])
+               }
+	       showInfo("Tests info loaded")
+	}
 }
 
 $(document).on('change', '#type', function (event) {  
@@ -102,7 +128,11 @@ $(document).on('click', '#saveTest', function (event) {
         var name = $('#name').val()
         var api = $('#api').val()
         var target = '/rtest/tests/add'
-        var testdata = {'api':api,'type':type,'payload':payload,'name':name}
+        if(testname !=undefined){
+          target = '/rtest/tests/update'
+        }
+        var response = $('#response').val()
+        var testdata = {'api':api,'type':type,'payload':payload,'name':name,'response':response}
         $.doPost(target,{'testname':testGroupName,'testdata':testdata,'validations':rules},loadResp)
 });
 

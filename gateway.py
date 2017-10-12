@@ -179,33 +179,18 @@ def uploadTest():
    return Response(resp, mimetype='application/json') 
 
 @app.route('/rtest/tests/delete',methods=['POST'])
-def deleteTest():
-   data = request.get_json(silent=True)  
-   try:
-      assert  data,'Invalid payload'
-      assert 'testname' in data.keys(),'testname cannot be null' 
-      assert 'testdata' in data.keys(),'testdata cannot be null' 
-      manager = TestManager(data['testname'])
-      resp = manager.removeTest(data)
-   except Exception as e:
-      resp = {'status':'error','error':str(e)} 
-   resp = json.dumps(resp)
-   return Response(resp, mimetype='application/json') 
-
-@app.route('/rtest/tests/deleteall',methods=['POST'])
 def deleteTests():
    data = request.get_json(silent=True)  
    try:
       assert  data,'Invalid payload'
-      assert 'testname' in data.keys(),'testname cannot be null' 
-      assert 'testdata' in data.keys(),'testdata cannot be null' 
-      manager = TestManager(data['testname'])
-      resp = manager.removeTests(data)
+      assert 'testgroupname' in data.keys(),'testname required' 
+      assert 'testnames' in data.keys(),'testnames required' 
+      manager = TestManager(data['testgroupname'])
+      resp = manager.removeTests(data['testnames'])
    except Exception as e:
       resp = {'status':'error','error':str(e)} 
    resp = json.dumps(resp)
    return Response(resp, mimetype='application/json') 
-
 
 @app.route('/rtest/testgroups',methods=['GET'])
 def getall():  

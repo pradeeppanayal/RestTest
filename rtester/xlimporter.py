@@ -1,6 +1,8 @@
 
 import openpyxl
 import os
+from rtester import TestManager
+
 
 class XLReader(object):
    def __init__(self,filename):
@@ -36,7 +38,14 @@ class RXLImporter(object):
       self.sourceFile =sourceFile
       self. filename = filename
       self. testGroup = testGroup
-
+   def _packAsRequestdata(self,data):
+      testdata = {}
+      testdata['name'] = data['name']
+      testdata['type'] = data['type']
+      testdata['api'] = data['api']
+      testdata['payload'] = data['payload']
+      testdata["response"] = data["response"]
+      return {'validations':[],"testdata":testdata}
    def importTests(self):
       path = os.path.join('/tmp/',self.filename)
       self.sourceFile.save(path)
@@ -44,5 +53,20 @@ class RXLImporter(object):
       data = reader.readData()
       success = 0
       total = len(data)
-      return {"status":"success","data":"Tests uploaded. Total : %d, Success : %d, Failed : %d" %(total,success,total-success)}
+      testGorupHandler =  TestManager(self. testGroup )
+      errors = []
+      for test in data:
+         try:
+            requestdata = self._packAsRequestdata(test)
+            order = 0
+            if test['order'] != '':
+               order = int (test['order'])
+            testGorupHandler.addTest(requestdata,order)
+            success +=1            
+         except Exception as e:
+            errors.append(str(e))
+      errMessage = ''
+      if total > success:
+         errMessage = '('+ ','.join(errors) +")"
+      return {"status":"success","data":"Tests uploaded. Total : %d, Success : %d, Failed : %d %s" %(total,success,total-success,errMessage)}
 
